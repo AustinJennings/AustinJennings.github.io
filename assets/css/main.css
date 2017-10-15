@@ -57,6 +57,12 @@
 		box-sizing: border-box;
 	}
 
+
+/* Google API map Stuffs*/
+#map { 
+		height: 400px; width: 100%; 
+		}
+
 /* Containers */
 
 	.container {
