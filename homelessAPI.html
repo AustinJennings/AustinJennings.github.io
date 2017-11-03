@@ -98,10 +98,12 @@ var geojson;
             layer.on({
                 mouseover: highlightFeature,
                 mouseout: resetHighlight,
-            //    click: zoomToFeature
             });
 
-
+            //creates a popup with other important data when clicked
+            
+        layer.bindPopup('<strong> County Name: </strong>' + feature.properties.County + '<br>' + feature.properties.hpks + ' out of every 1000 residents are homelss here.' );
+        }
 
 
 
