@@ -123,7 +123,7 @@
 //customize the popup, do you no present a laundry list of attributes, think about what the end user needs to know.
 
       voteSites.bindPopup(function (evt) {
-      return L.Util.template('<h3>Location Name: {Name}</h3><hr />Location Type: {Type}', evt.feature.properties);
+      return L.Util.template('<h3>Location Name: {Name}</h3><hr />Location Type: {Type}</br>Address: {Address}', evt.feature.properties);
        });
 
 
