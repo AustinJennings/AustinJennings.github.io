@@ -1,0 +1,391 @@
+<!--define file type-->
+
+<!DOCTYPE html>
+
+<!--Set page title and use CSS to define sizing-->
+<html>
+  <title>USGS 7 Day, >2.5 Mag Earthquake Map</title>
+  <head>
+    <style type="text/css">
+      
+      html, body { height: 100%; margin: 0; padding: 0; }
+      
+      #map { height: 100%; }
+    
+/*  Create and style an info box to display magnitude and location for map users */
+
+      #info-box {
+            background-color: #8dc1b8;
+            border: 2px solid #386e78;
+            border-radius: 4px;
+            bottom: 30px;
+            padding: 10px;
+            position: absolute;
+            left: 20px;
+            font-style: #386e78;
+          }
+
+      #legend {
+            background-color: #8dc1b8;
+            border: 2px solid #386e78;
+            border-radius: 4px;
+            bottom: 30px;
+            padding: 10px;
+            position: absolute;
+            right: 50px;
+            font-style: #386e78;
+      }
+      #legend h3 {
+        margin-top: 0;
+      }
+      #legend img {
+        vertical-align: middle;
+      }
+
+    </style>
+  </head>
+  
+<!--set html div space for map to land, as well as divs for legend and info-box-->
+  <body>
+    <div id="map"></div>
+     <div id="info-box">Hover over a circle for details!</div>
+    <!-- legend div, if someone figures it out  
+
+    <div id="legend"><h3>Legend</h3></div>  -->
+
+    <script type="text/javascript">
+
+//use Google style wizard to customize basemap style (https://mapstyle.withgoogle.com/) //
+
+function initMap() {
+        var styledMapType = new google.maps.StyledMapType(
+[
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8ec3b9"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1a3646"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#4b6878"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#64779e"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#4b6878"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.man_made",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#334e87"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#023e58"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#283d6a"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#6f9ba5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.attraction",
+    "stylers": [
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#023e58"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#3C7680"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#304a7d"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#98a5be"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#2c6675"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#255763"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#b0d5ce"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#023e58"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#98a5be"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#283d6a"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#3a4762"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#0e1626"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#4e6d70"
+      }
+    ]
+  }
+],
+            {name: 'Styled Map'});
+
+// Call up the map, set location/zoom, and include the MapTypeId to add to the map type control //
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 30, lng: -160},
+          zoom: 3,
+          mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                    'styled_map']
+          }
+        });
+
+// Here I define the styled map as a google-recognized mapTypeId, and set it to display //
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map')
+
+// Load GeoJSON from USGS live earthquake JSON data feed portal //
+        map.data.loadGeoJson('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson');
+
+// Set mouseover event for each feature.
+  map.data.addListener('mouseover', function(event) {
+    document.getElementById('info-box').textContent = "Magnitude: " +
+        event.feature.getProperty("mag")+" on the Richter Scale || "+" Location: "+ event.feature.getProperty("place")
+
+  });
+
+// Draw obect with symblogy based on magnitude  //
+  
+map.data.setStyle(function(feature) {
+    var magnitude = feature.getProperty('mag');
+    return {
+      icon: getCircle(magnitude)
+    };
+  });
+}
+
+// Defining symbology based on earthquake magnitude //
+
+function getCircle(magnitude) {
+  var circle = {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: '#ff7700',
+    fillOpacity: .8,
+    scale: Math.pow(2, magnitude) / 2,
+    strokeColor: '#8dc1b8',
+    strokeWeight: .5
+  };
+  return circle;
+}
+
+function eqfeed_callback(results) {
+  map.data.addGeoJson(results);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgE9LBPyEmS0uXeWkaPAK6PohgOimrZLQ&callback=initMap">
+    </script>
+  </body>
+</html>

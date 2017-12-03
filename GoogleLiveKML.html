@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Live KML Earthquake Data</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+
+   
+    </style>
+  </head>
+    <body>
+      <div id="map-canvas"></div>
+   <!-- Need to add my own API Key-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgE9LBPyEmS0uXeWkaPAK6PohgOimrZLQ"></script>
+    
+<!-- Now call up the map, with center over the Pacific -->
+      <script>
+    var map;
+      function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+          center: {lat: 26.8966128, lng: -157.5623801},
+          zoom: 3,
+          mapTypeId: google.maps.MapTypeId.HYBRID
+  });
+
+// Call up the USGS KML earthquake data layer for >1.0 mag quakes in past week //
+// For some reason, KML overrides defiened center and zoom... //
+    
+    var georssLayer = new google.maps.KmlLayer({
+    url: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week_depth_link.kml'
+  });
+
+// add to map //
+  georssLayer.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+      </script>
+    </body>
+</html>

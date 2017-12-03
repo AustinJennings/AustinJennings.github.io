@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+	<head>
+		<title>Live GeoJSON Data in Google Maps</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1><a href="index.html">Austin</a> Jennings</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Menu</a>
+								<ul>
+<!--edit drop down menus-->
+									<li><a href="maps.html">Map Portfolio</a></li>
+									<li><a href="about.html">About</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li>
+
+		<!-- toggle submenu options			
+									<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>	-->
+								</ul>
+							</li>
+							
+						</ul>
+					</nav>
+				</header>
+
+<!-- Main -->
+				<section id="main" class="container">
+					<header>
+						<h2>Linking Live GeoJSON Data</h2>
+						<p>Real-Time Earthquake Data using Google Maps API</p>
+					</header>
+					<div class="box">
+						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+						<h3>Customizing Real-Time Data Feeds</h3>
+						<p>This was part two of a laboratory assignement for my Web-Based GIS course.  The purpose was to use Google Maps or a similar API to link to live data from another internet location.
+							<br>
+							<br>
+						The data I linked to was from the USGS Earthquake Hazards Program, this time using thier <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php"> Real-time GeoJSON Feed</a>.  This map displays earthquakes from the last 7 days that were greater than 2.5 on the Richter Scale.  It is centered on the Ring of Fire in the Pacific, because this is where the most earthquakes tend to occur.
+							<br>
+							<br>
+						One of the nice things about GeoJSON data is that Google Maps and other APIs make it fairly easy to change the way data are symbolized.  I modified the symbology so that larger magnitude earthquakes result in larger circles!
+							<br>
+							<br>
+						Another tool that I used in this map was <a href="https://mapstyle.withgoogle.com/">Google's API Map Styling Wizard.</a>  This alows for customization of the basemap itself, and is a fairly new feature.  I used this tool to darken the background to make the earthquake symbols jump out a little, and to make the map more exciting.  You can view the fullscreen map <a href="GoogleLiveJSON.html">here.</a>
+  
+  			<iframe width="100%" height="400px" scrolling="yes" frameborder="no" src="GoogleLiveJSON.html"></iframe>
+  </head>
+  <body>
+ 
+   
+
+					</div>
+				</section>
+			
+
+<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://twitter.com/AustinMSGT/" class="icon fa-twitter"><span class="label">Twitter</span></a>
+						</li>
+						<li><a href="https://www.facebook.com/austin.jennings.750" class="icon fa-facebook"><span class="label">Facebook</span></a>
+						</li>
+						<li><a href="https://github.com/AustinJennings" class="icon fa-github"><span class="label">Github</span></a>
+						</li>
+						<li><a href="https://www.linkedin.com/in/austin-jennings-MSGT" class="icon fa-linkedin"><span class="label">Linkedin</span></a>
+						</li>
+
+					</ul>
+					<ul class="copyright">
+						<li>&copy; 2017. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+		</div>
+
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
