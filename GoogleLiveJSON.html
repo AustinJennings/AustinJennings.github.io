@@ -48,7 +48,10 @@
 <!--set html div space for map to land, as well as divs for legend and info-box-->
   <body>
     <div id="map"></div>
-     <div id="info-box">Hover over a circle for details!</div>
+     <div id="info-box"><strong>Live Earthquake Data from <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">USGS</a></strong>
+      <br>Circles show earthquakes larger than 2.5 magnitude in the last 7 days.  
+      <br>Hover over a circle for details!</div>
+    
     <!-- legend div, if someone figures it out  
 
     <div id="legend"><h3>Legend</h3></div>  -->
@@ -345,11 +348,15 @@ function initMap() {
 // Load GeoJSON from USGS live earthquake JSON data feed portal //
         map.data.loadGeoJson('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson');
 
-// Set mouseover event for each feature.
+// Set mouseover event for each feature //
   map.data.addListener('mouseover', function(event) {
     document.getElementById('info-box').textContent = "Magnitude: " +
         event.feature.getProperty("mag")+" on the Richter Scale || "+" Location: "+ event.feature.getProperty("place")
+  });
 
+  // Set mouseout to restore map text after hover //
+  map.data.addListener('mouseout', function(event) {
+    document.getElementById('info-box').textContent = "Circles show earthquakes larger than 2.5 magnitude in the last 7 days.  Hover over another circle for details!"
   });
 
 // Draw obect with symblogy based on magnitude  //
