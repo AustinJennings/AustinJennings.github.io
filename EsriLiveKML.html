@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Live KML in Esri API</title>
+
+<!-- Stylize map frame and info box-->  
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+/* Stylize a map info box for the lower right corner */
+    #meta {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 300px;
+      height: 220px;
+      z-index: 40;
+      background: #c5e5f9;
+      color: #777;
+      padding: 10px;
+      border: 2px solid #666;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      font-family: arial;
+      font-size: 0.9em;
+    }
+
+  /* Stylize the info box text formatting */
+    #meta h3 {
+      color: #666;
+      font-size: 1.1em;
+      padding: 0px;
+      margin: 0px;
+      display: inline-block;
+    }
+  </style>
+
+<!-- Call up Esri ArcGIS JS API 4.5 library (here, I'm using the light blue theme) -->
+<!-- The Lab called for using API 3.22, but the updated 4.5 has better customizaton options-->
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.5/esri/themes/light-blue/main.css"">
+  <script src="https://js.arcgis.com/4.5/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/KMLLayer",
+      "esri/widgets/ScaleBar",
+      "esri/widgets/BasemapToggle",
+      "esri/widgets/Legend",
+      "dojo/domReady!"
+    ], function(
+      Map,
+      MapView,
+      KMLLayer,
+      ScaleBar,
+      BasemapToggle,
+      Legend
+    ) {
+
+// Call KML Data from USGS (https://earthquake.usgs.gov/earthquakes/feed/v1.0/kml.php) //
+      var layer = new KMLLayer({
+        url: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week_depth_link.kml" 
+      });
+
+// Define extent and draw map and map controls //
+      var map = new Map({
+        basemap: "dark-gray",
+        layers: [layer]
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        center: [ -175, 34.6],
+        map: map,
+        zoom: 3,
+      });
+
+//Scale bar widget //
+      var scalebar = new ScaleBar({
+      view: view
+      });
+      view.ui.add(scalebar, "bottom-left");
+
+//  Add basemap selection widget to allow toggling aerial imagery //
+  var toggle = new BasemapToggle({ 
+     view: view,
+    nextBasemap: "hybrid" 
+  });
+
+  // Add widget to the top right corner of the view
+  view.ui.add(toggle, "top-right");
+
+
+// Add Legend widget - LEGEND DOES NOT SUPPORT KMLLayer //
+
+//var legend = new Legend({
+ // view: view,
+ // layerInfos: [{
+ //   layer: layer,
+ //   title: "Legend"
+ //  }]
+ // });
+
+//view.ui.add(legend, "bottom-left");
+ 
+});
+</script>
+</head>
+
+<body>
+  
+<!--Create map view div-->
+  <div id="viewDiv">
+    
+<!--Insert map info box Div-->
+    
+    <div id="meta">
+      <h3>Live Earthquake Data from <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/kml.php">USGS</a></h3>
+      <br />
+      <br />
+      This map displays all the earthquakes that occured in the last week that were greater than 1.0 on the Richter Scale.  The data comes from a live KML feed provided by the USGS Earthquakes Hazard Program.  Circle sizes are based on the magnitude, bigger circles mean more powerful earthquakes!  You can click on any of the circles to get more information about the time, depth, magnitude, and location of the earthquake.
+      <br />
+      <br />
+    </div>
+  </div>
+</body>
+
+</html>

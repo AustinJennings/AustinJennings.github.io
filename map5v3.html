@@ -7,7 +7,7 @@
 
 <html>
 	<head>
-		<title>Live GeoJSON Data in Google Maps</title>
+		<title>Live KML Using Esri API</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -52,24 +52,24 @@
 <!-- Main -->
 				<section id="main" class="container">
 					<header>
-						<h2>Linking Live GeoJSON Data</h2>
-						<p>Real-Time Earthquake Data using Google Maps API</p>
+						<h2>Linking Live KML Data</h2>
+						<p>Real-Time Earthquake Data using Esri ArcGIS JavaScript API</p>
 					</header>
 					<div class="box">
 						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-						<h3>Customizing Real-Time Data Feeds</h3>
-						<p>This was part two of a laboratory assignement for my Web-Based GIS course.  The purpose was to use Google Maps or a similar API to link to live data from another internet location.
+						<h3>Displaying Real-Time Data Feeds</h3>
+						<p>This was part three of a laboratory assignement for my Web-Based GIS course.  The purpose was to use several web map APIs to link to live data from other sources.
 							<br>
 							<br>
-						The data I linked to was from the USGS Earthquake Hazards Program, this time using thier <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php"> Real-time GeoJSON Feed</a>.  This map displays earthquakes from the last 7 days that were greater than 2.5 on the Richter Scale.  It is centered on the Ring of Fire in the Pacific, because this is where the most earthquakes tend to occur.
+						The data I linked to was from the USGS Earthquake Hazards Program, this time using thier <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/kml.php"> Real-time KML Feed</a>.  This map displays all the earthquakes that occured in the last week that were greater than 1.0 on the Richter Scale.  It is centered on the Ring of Fire in the Pacific, because this is where the most earthquakes tend to occur.
 							<br>
 							<br>
-						One of the nice things about GeoJSON data is that Google Maps and other APIs make it fairly easy to change the way data are symbolized.  I modified the symbology so that larger magnitude earthquakes result in larger circles!
+						Esri's ArcGIS JavaScript API, which I used for this map, does have a lot of great customization tools that are fairly easy to use.  However, similar to the Google Maps API, KML data is difficult to format.  You will see that in this map (compared to the same data displayed in <a href="https://austinjennings.github.io/map5v1.html">Google</a>), I was able to restore the circle-sizes based on magnitude and eliminated the cluttered legend table.  Pop-up window functionality is also preserved in Esri's API, so users can click on the earthquake circles to get more information!
 							<br>
 							<br>
-						Another tool that I used in this map was <a href="https://mapstyle.withgoogle.com/">Google's API Map Styling Wizard.</a>  This alows for customization of the basemap itself, and is a fairly new feature.  I used this tool to darken the background to make the earthquake symbols jump out a little, and to make the map more exciting.  You can view the fullscreen map <a href="GoogleLiveJSON.html" target="_blank">here.</a>
+						If you would like to view this map in full screen, click <a href="EsriLiveKML.html" target="_blank">here.</a>
   
-  			<iframe width="100%" height="400px" scrolling="yes" frameborder="no" src="GoogleLiveJSON.html"></iframe>
+  			<iframe width="100%" height="400px" scrolling="yes" frameborder="no" src="EsriLiveKML.html"></iframe>
   </head>
   <body>
  
