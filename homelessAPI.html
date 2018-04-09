@@ -124,7 +124,7 @@ var geojson;
             return this._div;
         };
        
- //update this next bit with your property names (I think of properties as attribute titles) also update the text in the heading tags to describe your data. If you are creating a choropleth map you may want to add '<b>' + props.NAME + '</b><br /> infront of the props.burgCount section so the name of the country or county will update as well, see the leaflet example code if you need more help
+ //update this next bit with your property names (I think of properties as attribute titles) 
 
         info.update = function (props) {
             this._div.innerHTML = '<h4>Homelessness Rate by County, Washington State</h4>' + (props ? props.hpks + ' of every 1000 residents are homeless in ' + props.County + ' County'
@@ -145,7 +145,7 @@ var geojson;
                     d = 0 ?  '#707070' : '#707070';
         }
 
-//styling the polygon so that fill changes with the value associated with the cell and number of reported burglary and B and E calls
+//styling the polygon so that fill changes with the value
         
         function style(feature) {
     return {
