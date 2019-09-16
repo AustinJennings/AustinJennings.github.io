@@ -14,7 +14,21 @@
 
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="https://austinjennings.github.io/assets/css/main.css" />
-
+        
+          
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.2.0.min.css" type="text/css" />
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.2.0.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
 
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -54,22 +68,37 @@
 <!-- Main -->
 				<section id="main" class="container">
 					<header>
-						<h2>Map Portfolio</h2>
-						<p>A selection of map projects I have worked on.</p>
+						<h2>WISKI Data Visualizaton Samples</h2>
+						<p>A brief selection of data dasbhoards built from WISKI and Python.</p>
 					</header>
 					<div class="box">
-						<h3>WISKI Data Visualization Samples</h3>
-						<p>Below, you will find two samples of automated data reports that I built using the KIWIS web API for our WISKI database. KIWIS allows users to request WISKI data remotely. Data can be analyzed and shown to audiences in a way that is not possible using just the WISKI program (available only to trained SWM staff) or the <a href= "https://waterquality.piercecountywa.org/applications/login.html?publicuser=Guest#waterdata/stationoverview"> standard, web-based WISKI WaterDataViewer page</a>. Python, JavaScript, or R programming languages allow me to build custom programs so that—with the click of a button or the loading of a web page—users can see the data they need in an intuitive and interactive format. The samples blow are only a glimpse of what is possible, though. Literally any of the data stored in WISKI can be exported, repackaged and visualized to tell a story. This flexibility allows decision-makers access to the data they need without requiring any understanding of the underlying WISKI database. And better yet, the reports are automated snapshots, so Monitoring staff don't have to spend time manually updating them. With a little extra effort, the data can even be streamed live and published to the County's website (emergency flood updates, perhaps?). Pretty neat, and a huge opportunity to improve SWM's data narrative. 
+						<h3>Let your data do the talking.</h3>
+						<p>Below, you will find two samples of automated data reports that I built using the KIWIS web API for our WISKI database. KIWIS allows users to request WISKI data remotely. Data can be analyzed and shown to audiences in a way that is not possible using the standard WISKI interface (available only to trained SWM staff) or the <a href= "https://waterquality.piercecountywa.org/applications/login.html?publicuser=Guest#waterdata/stationoverview"> standard, web-based WISKI WaterDataViewer page</a>. Python, JavaScript, or R programming languages allow me to build custom programs so that—with the click of a button or the loading of a web page—users can see the data they need in an intuitive and interactive format. 
+							<br>
+							<br>
+						The samples blow are only a glimpse of what is possible. Literally any of the data stored in WISKI can be exported, repackaged and visualized to tell a story. This flexibility allows decision-makers access to the data they need without requiring any understanding of WISKI or the underlying data structures. Once designed, they can be updated at the click of a button, so Monitoring staff don't have waste time with manual updates. With a little extra effort, the data can even be streamed live and published to the County's website (<a href="https://rivers.alberta.ca/">real-time, interactive flood data</a>, perhaps?). Pretty neat, and a huge opportunity to improve SWM's data narrative. 
 						</p>
 						
 					</div>
-				</section>
 
-<div class="bk-root" id="0b7be336-4e1a-45d9-9a72-76eb2f760a9d" data-root-id="1229"></div>          
-          
-            
-              <div class="bk-root" id="d14983c7-7686-4c79-a3d8-b27fa83fb383" data-root-id="1002"></div>
-            
+
+</section>
+<div class='box'>
+	<h2>Shellfish Growing Area Report</h2>
+	<p> In this example, I plotted fecal coliform results against rainfall data so that the Shellfish Protection District stakeholders can how runoff affects bacteria. Notice anythin suspicious about the summer of 2018? And, since not everyone knows where we get our data, I included a map of the weather station and sampling location. Laslty, I included the results table to aid in interpretation. The graphics are interactive, so you can zoom in and out on the chart or the map. If you click on a row in the table, the corresponding data point is highlighted on the graph. These are all fairly simple customizations that allow the user to dive into the data and formulate thier own insights. 
+	</p>
+<div class="bk-root" id="0b7be336-4e1a-45d9-9a72-76eb2f760a9d" data-root-id="1229" align='center'></div>          
+</div>
+ 
+<div class='box'> 
+<h2>Clover Creek Fecal Coliform Report</h2> 
+<p> Here, I generated what is called a 'Categorical Heat Map' for fecal coliform results across all 23 of the monitoring locations along Clover Creek and the North Fork. Across the x-axis, you can see sample date. There is a logrithmic key to the right that gives gives the fecal result value categories. The colors themselves were chosen to be somewhat intuitive (and colorblind friendly!), but you can always hover over a point to see the exact count for a given station and date. The hope is that we can begin to spot trends, seasonalities, and focus areas in a dataset that has been otherwise extremely variable.   
+<p>     
+<div class="bk-root" id="d14983c7-7686-4c79-a3d8-b27fa83fb383" data-root-id="1002" align='center'></div>
+</div>
+			
+
+
 
       
         <script type="application/json" id="1124">
